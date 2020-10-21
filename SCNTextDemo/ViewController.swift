@@ -27,7 +27,9 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        arView.session.run(ARWorldTrackingConfiguration(), options: [])
+        if ARWorldTrackingConfiguration.isSupported {
+            arView.session.run(ARWorldTrackingConfiguration(), options: [])
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +51,7 @@ class ViewController: UIViewController {
     #endif
         arView.autoenablesDefaultLighting = true
         arView.automaticallyUpdatesLighting = true
-        arView.backgroundColor = .clear//UIColor(white: 55.0 / 255.0, alpha: 1.0)
+        arView.backgroundColor = UIColor(white: 55.0 / 255.0, alpha: 1.0)
         arView.rendersContinuously = true
         arView.scene.rootNode.name = "root"
         
